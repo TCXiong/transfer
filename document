@@ -1,4 +1,3 @@
-Certainly! The code you provided generates a percentage map based on some input data, and here's a breakdown of the logic behind creating the percentage map:
 
 1. **Data Conversion and Preprocessing**:
    - The code starts by reading data from a file using the `convertRadiantToPolarMap` function. This function reads a file that presumably contains data related to radiation measurements and converts it into a polar map format. The polar map includes information about intensity, theta (angle), and phi (angle).
@@ -32,3 +31,65 @@ Certainly! The code you provided generates a percentage map based on some input 
    - Finally, the code prints the `PercentMap` to the console.
 
 The resulting percentage map visualizes how the intensity values are distributed across the polar map, showing regions of higher and lower intensity as different colors. This can be useful for analyzing and understanding the data in terms of its spatial distribution.
+
+
+break down the code within the `run_percentageMap` function step by step:
+
+1. `polarMap = convertRadiantToPolarMap(filename)`:
+   - This line reads data from a file specified by the `filename` parameter using the `convertRadiantToPolarMap` function. The data is expected to be in a format related to radiation measurements, and it's converted into a polar map format.
+
+2. `angPerPix = 0.0466`:
+   - `angPerPix` is set to a constant value representing the angle per pixel. This constant is used for subsequent calculations.
+
+3. `pmap_data = polarMap`:
+   - The polar map data obtained from `convertRadiantToPolarMap` is assigned to the variable `pmap_data`.
+
+4. `LS_Map = pmap_data[:, :, 0]`:
+   - `LS_Map` is extracted from `pmap_data`. It represents the intensity data from the polar map and is stored in a 2D array.
+
+5. `kernelRadius = 4.01/2 / angPerPix`:
+   - `kernelRadius` is calculated based on a constant (4.01) and `angPerPix`. This value is used as the radius for creating a circular kernel later in the code.
+
+6. `GaussRadius = 1/angPerPix`:
+   - `GaussRadius` is calculated based on `angPerPix`. It is used as a parameter for creating a Gaussian filter later in the code.
+
+7. `kernel = makeCircle(kernelRadius)`:
+   - A circular kernel is generated using the `makeCircle` function with the calculated `kernelRadius`. This kernel will be used in convolution operations.
+
+8. `TotalPower = sum(sum(LS_Map))`:
+   - `TotalPower` is calculated by summing all the intensity values in `LS_Map`. It represents the total power of the intensity data.
+
+9. `Cut = 40`:
+   - `Cut` is set to a constant value of 40.
+
+10. `res = 1 / (pmap_data[0, 1, 1] - pmap_data[0, 0, 1])`:
+    - `res` is calculated based on the angular difference between two adjacent pixels in the polar map.
+
+11. `R0 = Cut * res`:
+    - `R0` is calculated as the product of `Cut` and `res`. It represents a radial distance from the center of the polar map.
+
+12. `center = np.ceil(np.size(pmap_data[:, :, 0], 0) / 2)`:
+    - `center` is calculated as the half of the size of the polar map along its first axis (rows). It represents the center of the map.
+
+13. Gaussian Filtering:
+    - A Gaussian filter is created using the `makeGauss` function with a specified size (`[2*GaussRadius, 2*GaussRadius]`) and standard deviation (`[GaussRadius/1.5]`).
+    - The `normalise2sum` function is applied to normalize the Gaussian filter.
+
+14. `LS_Map` is convolved with the normalized Gaussian filter using `convolve2d` to smooth the intensity data.
+
+15. `SafetyMap` is convolved with the circular `kernel`. This convolution appears to be intended to perform some further processing on the data, although the purpose is not explicitly explained in the provided code.
+
+16. `maxMo = np.max(SafetyMap)`:
+    - The maximum value in `SafetyMap` is calculated and stored in `maxMo`.
+
+17. Percentage Map Calculation:
+    - `PercentMap` is computed by scaling the `SafetyMap` values to be percentages of the `TotalPower`. This represents the percentage contribution of each pixel to the total power.
+
+18. Visualization:
+    - The code sets up a Matplotlib plot and displays `PercentMap` as an image using a color map ("jet").
+    - The axis limits and labels are configured to create a meaningful plot.
+
+19. File Handling (Optional):
+    - There are commented-out lines of code for creating a filename (`FoV`) based on certain parameters. This filename can be used for saving the visualization as image files (e.g., PNG or SVG). The results directory is also specified.
+
+In summary, this part of the code performs operations to filter, process, and visualize data from a polar map, ultimately generating a percentage map that represents the relative contribution of each pixel to the total power of the intensity data. The visualization helps visualize the spatial distribution of intensity in the data.
