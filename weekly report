@@ -6,3 +6,7 @@ GUI Optimization:
 Backend Improvements:
   *Reconstructed the API functions within the measure.py file to increase flexibility for developers, 
 allowing for single measurement function invocation such as measuring rise time and other parameters.
+
+Other:
+  *Documented the percentage map code and included several details about the logic of its implementation. 
+This will be helpful in investigating the bug
