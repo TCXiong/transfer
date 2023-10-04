@@ -2,11 +2,16 @@ import pandas as pd
 import numpy as np
 
 # Load the CSV file into a DataFrame
-file_path = 'your_file.csv'  # Replace with the actual file path
+file_path = 'test.csv'  # Replace with the actual file path
 df = pd.read_csv(file_path, header=None)
 
 # Find the index where the y values are relatively flat
-flat_part_index = np.where(np.gradient(df.iloc[:, 1].values) < 0.001)[0]
+flat_part_index = np.where(np.gradient(df.iloc[:, 1].values) < 0.000000000001)[0]
+
+
+print(flat_part_index)
+
+
 
 # Find the average y value in the flat part
 average_y = np.mean(df.iloc[flat_part_index, 1])
