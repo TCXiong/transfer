@@ -1,12 +1,21 @@
-GUI Optimization:
-  *Redesigned the precheck window layout for improved usability
-  *Restructured several notification windows to allow for resizing and scaling of components, resulting in a cleaner look
-  *Developed a new GUI for the measurement window to enhance user experience
 
-Backend Improvements:
-  *Reconstructed the API functions within the measure.py file to increase flexibility for developers, 
-allowing for single measurement function invocation such as measuring rise time and other parameters.
+Weekly Report: October 5, 2023
 
-Other:
-  *Documented the percentage map code and included several details about the logic of its implementation. 
-This will be helpful in investigating the bug
+[PPTA Inspection]
+
+Objective: Investigate the decrease in PPTA with an increase in pulse width.
+
+Methodology: PPTA is calculated as safetymap divided by totalpower. Notably, as total power increases, PPTA decreases. Conducted multiple test samples and verified the outcome through result comparisons.
+[Fall Time Calculation Script]
+
+Objective: Develop a script for fall time calculation using the gradient method.
+
+Challenge: Initial attempts revealed an unacceptable level of bias.
+Action Steps:
+
+Received a MATLAB script from Romain and executed it online for verification. Noted the necessity to modify input data by eliminating the instruction part in the CSV file.
+Python Script Adaptation:
+
+Developed a Python script based on the MATLAB file.
+3.1 Extraction Process: Successfully extracted time, intensity, and smooth intensity.
+3.2 Optimization: Employed various Gaussian filters to minimize discrepancies between the Python and MATLAB versions of the script.
