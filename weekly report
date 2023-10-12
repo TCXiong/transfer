@@ -4,4 +4,5 @@ Weekly Report: October 12, 2023
 
 - Initial development(version 1): Developed a python script for fall time calculation based on the algorithm from the matlab script made by Romain.
   - There are some biases of the results
+- Enhance the existing script by incorporating a new function that automates the process of saving all measurements into a distinct text file.
 - Considering that the script of calculating the fall time need the special format of data(only have two columns, the first column is the time, and the second column is the intensity), so I Developed a python script for converting all raw data to clean data.
