@@ -176,8 +176,11 @@ for filename in files:
     plt.axvline(x=T2_PW, color='g', linestyle='--')
     plt.legend([f'PW: {PW_ns[-1]:.5f} ns'])
     plt.title(filename)
-    plt.savefig(f'{filename}_PW_{PW_ns[-1]:.5f}ns_Raise_{Raise_ns[-1]:.5f}ns_Fall_{Fall_ns[-1]:.5f}ns.png')
+    # plt.savefig(f'{filename}_PW_{PW_ns[-1]:.5f}ns_Raise_{Raise_ns[-1]:.5f}ns_Fall_{Fall_ns[-1]:.5f}ns.png')
+    plot_file_path = os.path.join(folder_name, f'{filename}_PW_{PW_ns[-1]:.5f}ns_Raise_{Raise_ns[-1]:.5f}ns_Fall_{Fall_ns[-1]:.5f}ns.png')
+    plt.savefig(plot_file_path)
     plt.show()
+    
     # plt.plot(time, intensity)
     # plt.grid(True, which='both', linestyle='--', linewidth=0.5)
     # plt.xlim([time[0], time[-1]])
