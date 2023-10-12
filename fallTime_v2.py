@@ -144,6 +144,19 @@ for filename in files:
     print("Fall_ns_str", Fall_ns_str)
 
 
+
+    # ... (previous code)
+    folder_name = 'measurements'
+    os.makedirs(folder_name, exist_ok=True)
+    # Save measurements into one text file
+    file_path = os.path.join(folder_name, f'{filename}_measurements.txt')
+    with open(file_path, 'w') as file:
+        file.write(f'Fall_ns: {Fall_ns[-1]:.5f}\n')
+        file.write(f'Raise_ns: {Raise_ns[-1]:.5f}\n')
+        file.write(f'PW_ns: {PW_ns[-1]:.5f}\n')
+
+
+
     # Plot figure
     plt.figure()
     plt.plot(time, intensity)
