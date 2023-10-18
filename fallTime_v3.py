@@ -2,7 +2,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks, butter, filtfilt
-from tkinter import Tk, filedialog, Label, Listbox, Button
+from tkinter import Tk, filedialog, Label, Listbox, Button, Text, Scrollbar
 import tkinter as tk
 
 
@@ -29,8 +29,6 @@ def browse_button():
     print("Selected files:", selected_files)
 
 def process_files():
-    fig, ax1 = plt.subplots()
-
     # Function to process the selected CSV files and generate subplots
     for file_path in selected_files:
         filename = os.path.basename(file_path)
@@ -119,8 +117,6 @@ def process_files():
         Fall_ns_str = "{:.5f}".format(Fall_ns[-1])
         print("Fall_ns_str", Fall_ns_str)
 
-
-
         # ... (previous code)
         folder_name = 'measurements'
         os.makedirs(folder_name, exist_ok=True)
@@ -134,34 +130,35 @@ def process_files():
 
         # Plot subplot
         # plt.plot(time, intensity, label=filename)
-        ax1.plot(time, intensity, label=f'{filename} - Curve 1')
-        # plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+        plt.plot(time, intensity, label=f'{filename}')
+        plt.grid(True, which='both', linestyle='--', linewidth=0.5)
         # plt.xlim([time[0], time[-1]])
         # plt.ylim([min_intensity - 0.005, np.max(intensity) * 1.1])
-        # plt.title("Placeholder")
-        # plt.xlabel('time (ns)')
-        # plt.ylabel('Intensity (V)')
-        ax1.plot(T1_Raise, Max_intensity * cut1, 'b*')
-        ax1.plot(T2_Raise, Max_intensity * cut2, 'b*')
-        ax1.plot(T1_Fall, Max_intensity * cut2, 'r*')
-        ax1.plot(T2_Fall, Max_intensity * cut1, 'r*')
-        ax1.plot(T1_PW, threshold, 'g*')
-        ax1.plot(T2_PW, threshold, 'g*')
-        ax1.axvline(x=T1_PW, color='g', linestyle='--')
-        ax1.axvline(x=T2_PW, color='g', linestyle='--')
-
+        plt.title("Placeholder")
+        plt.xlabel('time (ns)')
+        plt.ylabel('Intensity (V)')
+        plt.plot(T1_Raise, Max_intensity * cut1, 'b*')
+        plt.plot(T2_Raise, Max_intensity * cut2, 'b*')
+        plt.plot(T1_Fall, Max_intensity * cut2, 'r*')
+        plt.plot(T2_Fall, Max_intensity * cut1, 'r*')
+        plt.plot(T1_PW, threshold, 'g*')
+        plt.plot(T2_PW, threshold, 'g*')
+        plt.axvline(x=T1_PW, color='g', linestyle='--')
+        plt.axvline(x=T2_PW, color='g', linestyle='--')
+        
  
         # plt.legend([f'{filename}'])
 
 
     # Customize plot
-    ax1.grid(True, which='both', linestyle='--', linewidth=0.5)
-    # plt.xlim([time[0], time[-1]])
-    # plt.ylim([min_intensity - 0.005, np.max(intensity) * 1.1])
-    plt.title("Combined Subplots")
-    plt.xlabel('time (ns)')
-    plt.ylabel('Intensity (V)')
+    # plt.grid(True, which='both', linestyle='--', linewidth=0.5)
+    # # plt.xlim([time[0], time[-1]])
+    # # plt.ylim([min_intensity - 0.005, np.max(intensity) * 1.1])
+    # plt.title("Combined Subplots")
+    # plt.xlabel('time (ns)')
+    # plt.ylabel('Intensity (V)')
     # plt.legend()
+    plt.legend()
     plt.show()
 
     # Clear selected files after processing
@@ -173,17 +170,48 @@ def process_files():
 
 # Create the main GUI window
 root = Tk()
-root.title("CSV File Processor")
+root.title("Fall Time Calculation")
+root.geometry("600x600") 
 
-# Listbox to display selected files
-listbox_label = Label(root, text="Selected Files:")
-listbox_label.pack(pady=10)
-listbox = Listbox(root)
-listbox.pack(pady=10)
+
+
+# Text widget to display instructions
+instructions_text = """Instructions:
+1. Click the 'Browse' button to select CSV files.
+2. Selected files will be displayed in the list.
+3. Click 'Process Files' to generate plots.
+4. Legends will be added for each curve.
+5. Close the plot window after viewing.
+6. Usually select two csv files and process them.
+"""
+
+text_widget = Text(root, height=8, width=60, state="normal")
+text_widget.insert('1.0', instructions_text)
+text_widget.config(state="disabled")  # Make the text widget non-editable
+text_widget.pack(pady=10)
+
+# Scrollbar for the text widget
+scrollbar = Scrollbar(root, command=text_widget.yview)
+scrollbar.pack(side='right', fill='y')
+text_widget['yscrollcommand'] = scrollbar.set
+
 
 # Browse button
 browse_button = Button(root, text="Browse", command=browse_button)
 browse_button.pack(pady=20)
+
+# Listbox to display selected files
+listbox_label = Label(root, text="Selected Files:")
+listbox_label.pack(pady=10)
+# listbox = Listbox(root)
+# listbox.pack(pady=10)
+
+
+max_filename_length = max(len(os.path.basename(file_path)) for file_path in selected_files) if selected_files else 40
+
+listbox = Listbox(root, width=max_filename_length)
+listbox.pack(pady=10)
+
 
 # Process button
 process_button = Button(root, text="Process Files", command=process_files)
