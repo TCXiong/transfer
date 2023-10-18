@@ -33,7 +33,7 @@ def process_files():
     for file_path in selected_files:
         filename = os.path.basename(file_path)
         print(filename)
-        data = np.loadtxt(os.path.join('./modified', filename), delimiter=',')
+        data = np.loadtxt(file_path, delimiter=',')
         print(data)
 
         # Rest of your code for processing the CSV file, similar to the original code...
