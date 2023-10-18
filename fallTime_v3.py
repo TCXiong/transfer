@@ -117,11 +117,8 @@ def process_files():
         Fall_ns_str = "{:.5f}".format(Fall_ns[-1])
         print("Fall_ns_str", Fall_ns_str)
 
-        # ... (previous code)
-        folder_name = 'measurements'
-        os.makedirs(folder_name, exist_ok=True)
-        # Save measurements into one text file
-        file_path = os.path.join(folder_name, f'{filename}_measurements.txt')
+        # save the measurements to the current folder
+        file_path = f'{filename}_measurements.txt'
         with open(file_path, 'w') as file:
             file.write(f'Fall_ns: {Fall_ns[-1]:.5f}\n')
             file.write(f'Raise_ns: {Raise_ns[-1]:.5f}\n')
@@ -132,7 +129,7 @@ def process_files():
         # plt.plot(time, intensity, label=filename)
         plt.plot(time, intensity, label=f'{filename}')
         plt.grid(True, which='both', linestyle='--', linewidth=0.5)
-        # plt.xlim([time[0], time[-1]])
+        # plt.xlim([time[0], time[-1]])  
         # plt.ylim([min_intensity - 0.005, np.max(intensity) * 1.1])
         plt.title("Placeholder")
         plt.xlabel('time (ns)')
@@ -180,9 +177,9 @@ instructions_text = """Instructions:
 1. Click the 'Browse' button to select CSV files.
 2. Selected files will be displayed in the list.
 3. Click 'Process Files' to generate plots.
-4. Legends will be added for each curve.
-5. Close the plot window after viewing.
-6. Usually select two csv files and process them.
+4. Hold ctrl and then click files so that you can select multiple files.
+5. Measurements including fall time and so on will be save in current folder.
+6. Usually select two csv files to compare.
 """
 
 text_widget = Text(root, height=8, width=60, state="normal")
