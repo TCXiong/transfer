@@ -1,13 +1,14 @@
 Weekly Report: October 17, 2023
 
-[Fall Time Calculation Script -- (Python Script Adaptation)]
+[Fall Time Calculation Script]
+- Implement a graphical user interface (GUI) for the fall time calculation script, incorporating a browse button to simplify the selection of test files by users.
+- Enhance the fall time calculation script to enable the plotting of two curves within a unified graph. This modification aims to facilitate a comparative analysis of their respective characteristics.
+- Integrate comprehensive instructions into the script, ensuring users are guided effectively through its functionalities and usage.
 
 [mzp transient curve plot]
-
 - Assist William in generating MZP transient curves by adjusting the script.
 - Due to an incompatible data format for the algorithm, I developed a preprocessing script to generate appropriately formatted data files. These files can then be utilized to produce the MZP transient curves.
 - Integrate new functions into the script for calculating relaxation times.
 
 [Miscellaneous]
-
 - Scheduled a meeting with Jean to review the advancements in the automation software for the oscilloscope. Explored strategies for integrating the Tektronix oscilloscope with the software program.
