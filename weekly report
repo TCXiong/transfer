@@ -1,8 +1,15 @@
-Weekly Report: October 17, 2023
+Weekly Report: October , 2023
 
 [Oscilloscope Automation]
+
 - Collaborated with Jaeyong in testing new functions for the oscilloscope automation script, detecting bugs during the testing phase.
 - Identified and fixed bugs, specifically addressing an issue inherent in the wrong class assignment, namely 'QMainWindow'.
 
+[Fall Time Calculation Script]
+
+- Investigated reported bugs related to issues with measurements not being saved. Found that the solution involves users opening the folder containing the script and running it.
+- Implemented an additional function allowing users to choose the destination folder for saving measurements.
+
 [Miscellaneous]
-- 
+
+-
