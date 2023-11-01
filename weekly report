@@ -1,15 +1,9 @@
 Weekly Report: October , 2023
 
-[Oscilloscope Automation]
+[3.5 GHz Oscilloscope Automation]
 
-- Collaborated with Jaeyong in testing new functions for the oscilloscope automation script, detecting bugs during the testing phase.
-- Identified and fixed bugs, specifically addressing an issue inherent in the wrong class assignment, namely 'QMainWindow'.
+- Formulated a comprehensive initial script tailored specifically for Tektronix, designed to facilitate connection tests. The script serves as a foundational framework and is now in the crucial testing phase to ensure its robustness and effectiveness in real-world scenarios
 
-[Fall Time Calculation Script]
+- Devised a plot function aimed at reading data from the oscilloscope, processing the acquired information, and visually representing the resulting curve. This functionality is in the developmental phase and is pending comprehensive testing.
 
-- Investigated reported bugs related to issues with measurements not being saved. Found that the solution involves users opening the folder containing the script and running it.
-- Implemented an additional function allowing users to choose the destination folder for saving measurements.
-
-[Miscellaneous]
-
--
+## [Miscellaneous]
