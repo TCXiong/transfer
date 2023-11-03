@@ -7,3 +7,5 @@ Weekly Report: October , 2023
 - Devised a plot function aimed at reading data from the oscilloscope, processing the acquired information, and visually representing the resulting curve. This functionality is in the developmental phase and is pending comprehensive testing.
 
 ## [Miscellaneous]
+
+- Modify the MZP transient script to execute the updated sample, and extract the relaxation time from the simulation. Ensure that the obtained relaxation time is thoroughly justified.
