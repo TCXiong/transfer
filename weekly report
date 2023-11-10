@@ -1,11 +1,7 @@
 Weekly Report: October , 2023
 
-[3.5 GHz Oscilloscope Automation]
-
-- Formulated a comprehensive initial script tailored specifically for Tektronix, designed to facilitate connection tests. The script serves as a foundational framework and is now in the crucial testing phase to ensure its robustness and effectiveness in real-world scenarios
-
-- Devised a plot function aimed at reading data from the oscilloscope, processing the acquired information, and visually representing the resulting curve. This functionality is in the developmental phase and is pending comprehensive testing.
-
-## [Miscellaneous]
-
-- Modify the MZP transient script to execute the updated sample, and extract the relaxation time from the simulation. Ensure that the obtained relaxation time is thoroughly justified.
+- Completed initial section of the user manual for the oscilloscope automation software, addressing connection checks and channel settings.
+- Emphasized the importance of running the script while connected to the oscilloscope, capturing diverse results, and integrating them into the manual for thoroughness.
+- Initiated work on the developer manual to streamline future development processes.
+- Finalized documentation for the graphical user interface (GUI) in the developer manual.
+- Currently in the process of consulting further to determine and incorporate additional details into the GUI section for enhanced clarity and completeness.
