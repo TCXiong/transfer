@@ -1,7 +1,4 @@
 Weekly Report: October , 2023
 
-- Completed initial section of the user manual for the oscilloscope automation software, addressing connection checks and channel settings.
-- Emphasized the importance of running the script while connected to the oscilloscope, capturing diverse results, and integrating them into the manual for thoroughness.
-- Initiated work on the developer manual to streamline future development processes.
-- Finalized documentation for the graphical user interface (GUI) in the developer manual.
-- Currently in the process of consulting further to determine and incorporate additional details into the GUI section for enhanced clarity and completeness.
+- Corrected a typo in the plot package by modifying the name of the beam profile in the UI files.
+- Developed a user manual for the converter script created by Jaeyong. This script efficiently converts raw TXT files, including header information, into clean CSV files suitable for fall time calculations.
