@@ -1,6 +1,8 @@
 Weekly Report: October , 2023
 
-- Corrected a typo in the plot package by modifying the name of the beam profile in the UI files.
-- Developed a user manual for the converter script created by Jaeyong. This script efficiently converts raw TXT files, including header information, into clean CSV files suitable for fall time calculations.
-- Crafted a script to compute the integration of a given curve and designed a user-friendly graphical user interface (GUI) that visualizes the curve. Users can seamlessly interact with the plot by selecting two points, prompting the system to automatically calculate the integration value between these chosen points.
-- Support Jaeyong in conducting tests on the automation script, identified an unidentified bug, currently in the process of investigation. I intend to address and rectify the issue upon returning to the office.
+Here are some refined versions of your sentences:
+
+1. Recovering from my recent business trip.
+2. Sync up with Jean to discuss the issues we're having with the MZP transient script.
+3. I have uploaded a new version of the MZP script to the lab folder, which now includes relaxation time. 
+However, need to figure out how to eliminate the negative values that are showing up in the plot.
