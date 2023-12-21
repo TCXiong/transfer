@@ -1,35 +1,33 @@
-The provided code is a Python script that integrates various libraries to create a graphical user interface (GUI) application for processing and visualizing data from CSV files, particularly focusing on the calculation of fall time, raise time, and pulse width in signal data. Let's break down the analysis into purpose, design principles, and code details.
+The updated script is a Python-based graphical user interface (GUI) application for data processing and visualization. It uses `Tkinter` for the GUI, `Pandas` for data manipulation, `NumPy` for numerical calculations, `SciPy` for interpolation, and `Matplotlib` for plotting. This script is designed to read data from two Excel files, perform interpolations, calculate peak power, and then plot the results. Let's break down the analysis into purpose, design principles, and code details.
 
 ### Purpose
-1. **Data Processing**: The core functionality is to load, process, and analyze time-series data from CSV files. The focus is on signal analysis, specifically calculating and visualizing parameters like fall time, raise time, and pulse width.
-2. **User Interaction**: It uses a GUI to allow users to select files, choose a save directory, and interactively process and visualize the data.
+1. **Data Importing**: The script imports data from two Excel files. The first file contains the main data, and the second file provides additional data points for interpolation.
+2. **Data Processing and Interpolation**: It performs interpolations using different methods (linear, PCHIP, Cubic Spline) and calculates peak power from the measured power and interpolated duty cycle.
+3. **Data Visualization**: The script plots duty cycle and peak power to visually represent the processed data.
+4. **User Interaction**: The GUI allows users to select the data files and execute the processing and plotting functions.
 
 ### Design Principles
-1. **Modularity**: The code is organized into functions, each responsible for a specific task (e.g., file browsing, folder selection, data processing).
-2. **User Interface**: Tkinter is used for the GUI, offering basic yet functional components like buttons, list boxes, and text widgets for interaction.
-3. **Data Visualization**: Matplotlib is employed for plotting data, a common choice for Python-based data visualization.
-4. **Data Analysis**: NumPy and SciPy are utilized for numerical operations and signal processing, which are essential for the analysis tasks performed by the application.
+1. **Modular Design**: The script is organized into functions, each handling a specific task such as file browsing, data processing, or plotting.
+2. **Use of Libraries**: It efficiently uses external libraries for specific tasks - `Pandas` for data handling, `NumPy` for numerical operations, `SciPy` for interpolation, and `Matplotlib` for plotting.
+3. **GUI-Based Interaction**: The use of Tkinter makes the application interactive and user-friendly.
 
 ### Code Details
-1. **Global Variables**: `selected_files`, `selected_folder`, `PW_ns`, `Raise_ns`, `Fall_ns` are used to store data across different functions.
+1. **Global Variables**: `selected_file_path` and `selected_file_path_2` store the paths of the selected files.
 2. **File Operations**:
-   - `browse_button()`: Lets the user select CSV files and updates the GUI list box with selected file names.
-   - `select_folder_button()`: Lets the user select a folder for saving outputs.
-3. **Data Processing - `process_files()`**:
-   - Loads data from CSV files using NumPy.
-   - Performs signal analysis to calculate fall time, raise time, and pulse width.
-   - Uses linear interpolation for more accurate time calculation at specific intensity thresholds.
-   - Saves calculated parameters to a file in the selected directory.
-   - Visualizes data and calculated parameters using Matplotlib.
+   - `browse_file()` and `browse_file_2()`: Functions for opening file dialogues to select the data files. The selected file paths are displayed in the GUI.
+3. **Data Processing - `process_data()`**:
+   - Reads data from Excel files using `pandas`.
+   - Performs interpolation using linear interpolation, PCHIP, and Cubic Spline methods.
+   - Calculates peak power and saves the results to an Excel file.
+   - Plots duty cycle and peak power using `matplotlib`.
 4. **GUI Components**: 
-   - `Tk`, `Label`, `Listbox`, `Button`, `Text` widgets are used to create the interface.
-   - Instructions and file selections are displayed in text and list boxes.
-   - The main window is set up with a title and specific geometry.
-5. **Event-driven Programming**: The GUI operates on event-driven principles, where functions are called in response to user actions like button clicks.
+   - `Button`, `Label`, and `mainloop()` from Tkinter are used for creating the interface.
+   - The GUI allows file selection and triggering of the data processing function.
+5. **Event-Driven Architecture**: The application responds to user events, such as button clicks, to execute corresponding functions.
 
 ### Areas of Improvement / Considerations
-1. **Error Handling**: The script lacks robust error handling, particularly for file reading and data processing.
-2. **Code Optimization**: The script could be refactored for better efficiency and readability.
-3. **Functionality Expansion**: Additional features like more detailed signal analysis or support for different file formats could be added.
-4. **User Interface**: The GUI design is basic and could be improved for a better user experience.
-5. **Documentation and Comments**: Adding more comments and documentation would make the code more maintainable and understandable.
+1. **Error Handling**: The script could benefit from more robust error handling, especially for file reading and data processing.
+2. **User Feedback**: Providing feedback, such as success messages or error alerts, would enhance the user experience.
+3. **Data Validation**: Adding checks to ensure the correctness and compatibility of the imported data could prevent potential runtime errors.
+4. **Documentation and Comments**: The code could be more thoroughly commented to explain its functionality, making it more maintainable and understandable.
+5. **GUI Layout and Design**: The current GUI layout is basic and functional; it could be improved for aesthetics and usability.
