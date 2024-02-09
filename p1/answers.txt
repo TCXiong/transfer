@@ -1,0 +1,16 @@
+
+Q2
+Prediction for h1 and h4:
+latency: latency_l1 + latency_l2 + latency_l3 = 170.049 
+throughput:min(throughput_l1, throughput_l2, throughput_l3) = 
+min_server_throughput = 18.94 mbps
+min_client_throughput = 22.90 mbps
+
+Measurement for h1 and h4:
+latency = 168.037
+throughput: 
+server = 18.27 mbps
+client = 22.64 mbps
+
+Q3
+
