@@ -1,7 +1,7 @@
 
 Q2
 Prediction for h1 and h4:
-latency: latency_l1 + latency_l2 + latency_l3 = 170.049 
+latency: latency_l1 + latency_l2 + latency_l3 = 170.049 ms
 throughput:min(throughput_l1, throughput_l2, throughput_l3) = 
 min_server_throughput = 18.94 mbps
 min_client_throughput = 22.90 mbps
@@ -23,23 +23,72 @@ are slightly below the predicted values (18.94 Mbps and 22.90 Mbps, respectively
 The minor difference can be attributed to factors such as overhead in the network protocol, 
 which consumes a portion of the bandwidth, or variations in network traffic that were not considered in the prediction.
 
+******************************************************************************************************************************************************
 Q3
 
-prediction: We think 
+Two pairs:
+  prediction:   
+    latency:
+      h1 to h4(avg rtt) = 170.049 ms
+      h7 to h9(avg rtt) = 170.049 ms
+    throughput:
+      h1 to h4 = 18.94 / 2 = 9.47 Mbps
+      h7 to h9 = 18.94 / 2 = 9.47 Mbps
 
-Measure:
-  latency:
-    h1 - h4 : avg rtt = 168.219
-    h7 - h9 : avg rtt = 172.611
-  throughput:
-    server (h1): 12.50 Mbps
-    client (h4): 17.50 Mbps
-    server (h7): 6.59 Mbps
-    client (h9): 8.70 Mbps
+  Measure:
+    latency:
+      h1 to h4(avg rtt) = 168.219 ms
+      h7 to h9(avg rtt) = 172.611 ms
+    throughput:
+      server (h1) = 12.50 Mbps
+      client (h4) = 17.50 Mbps
+      server (h7) = 6.59 Mbps
+      client (h9) = 8.70 Mbps
+      h1 to h4 = 12.5 Mbps
+      h7 to h9 = 6.59 Mbps
+  
+Three pairs:
+  prediction:
+    latency:
+      h8 to h10(avg rtt) = 170.049 ms
+      h7 to h9(avg rtt) = 170.049 ms
+      h1 to h4(avg rtt) = 170.049 ms
+    throughput:
+      h8 to h10 = 18.94 / 3 = 6.31 Mbps
+      h7 to h9 = 18.94 / 3 = 6.31 Mbps
+      h1 to h4 = 18.94 / 3 = 6.31 Mbps
 
-    for client side : 17.50 + 8.70 = 26.20 Mbps
-    for server side: 12.50 + 6.59 = 19.09 Mbps
+  Measure:
+    latency:
+      h8 to h10(avg rtt) = 168.727 ms
+      h7 to h9(avg rtt) = 170.935 ms
+      h1 to h4(avg rtt) = 170.029 ms  
+    throughput:
+      server (h1) = 3.26 Mbps
+      client (h4) = 4.11 Mbps
+      server (h8) = 5.35 Mbps
+      client (h10) = 7.05 Mbps
+      server (h7) = 11.00 Mbps
+      client (h9) = 13.76 Mbps
+      h4 to h1 = 3.26 Mbps
+      h10 to h8 = 5.35 Mbps 
+      h9 to h7 = 11.00 Mbps
+
+Analysis:
+  The latency, measured as the average round-trip time (RTT), remains relatively stable across both scenarios 
+  (two pairs and three pairs of hosts). This stability suggests that the network can handle multiple simultaneous 
+  connections without significant increases in latency. The slight variations in RTT (e.g., from 168.219 ms to 172.611 ms in the two-pairs scenario) 
+  could be attributed to network congestion or variability in packet routing paths, but overall, the impact on latency is minimal.
+
+  The throughput analysis reveals more significant effects due to multiplexing. When two pairs of hosts are communicating, 
+  the throughput does not simply halve for each pair compared to the single-pair scenario; instead, there's an unequal split. 
+  For instance, one pair (h1 to h4) achieves a higher throughput (12.5 Mbps) than predicted (9.47 Mbps), 
+  while the other (h7 to h9) sees a decrease to 6.59 Mbps. This discrepancy might result from the network's dynamic response to congestion, 
+  where certain paths may gain preferential bandwidth allocation based on current network conditions or configurations.
 
 
+******************************************************************************************************************************************************
+
+Q4
 
 
