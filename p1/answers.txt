@@ -1,33 +1,42 @@
 
 Q2
-Prediction for h1 and h4:
-latency: latency_l1 + latency_l2 + latency_l3 = 170.049 ms
-throughput:min(throughput_l1, throughput_l2, throughput_l3) = 
-min_server_throughput = 18.94 mbps
-min_client_throughput = 22.90 mbps
+Prediction:
+  Latency:
+    h1 to h4(avg rtt) = latency_l1 + latency_l2 + latency_l3 = 170.049 ms
+  Throughput:
+    min_server_throughput = 18.94 Mbps
+    min_client_throughput = 22.90 Mbps
+    h1 to h4 = min(throughput_l1, throughput_l2, throughput_l3) = 18.94 Mbps 
 
-Measurement for h1 and h4:
-latency = 168.037
-throughput: 
-server = 18.27 mbps
-client = 22.64 mbps
-
+Measurement:
+  Latency:
+    h1 to h4(avg rtt) = 168.037 ms
+  Throughput:
+    server = 18.27 Mbps
+    client = 22.64 Mbps
+    h1 to h4 = 18.27 Mbps
 
 Analysis:
-  Latency: The measured latency of 168.037 ms is slightly lower than the predicted 
-170.049 ms. This discrepancy could be due to network conditions at the time of measurement, 
-such as reduced congestion or improved routing efficiency, 
-which were not accounted for in the initial prediction.
-  Throughput: The measured throughputs for both server (18.27 Mbps) and client (22.64 Mbps) 
-are slightly below the predicted values (18.94 Mbps and 22.90 Mbps, respectively). 
-The minor difference can be attributed to factors such as overhead in the network protocol, 
-which consumes a portion of the bandwidth, or variations in network traffic that were not considered in the prediction.
+  We predicted the time it takes for data to go back and forth (latency) between certain points in the network 
+  by adding up the latencies for three specific links (L1, L2, and L3), expecting an average of 170.049 milliseconds (ms). 
+  The actual time measured was a bit less, at 168.037 ms. This small difference of about 2 ms might be because of 
+  how precise our tools were, changes in the network, or delays in the network equipment that we didn't factor into our prediction. 
+  Nevertheless, the prediction was very close to the actual measurement, showing our prediction method was pretty accurate.
+
+  For the data transfer speed (throughput) from point h1 to h4, we predicted the slowest link in the path 
+  (among L1, L2, and L3) would set the maximum speed, which we thought would be 18.94 Megabits per second (Mbps). 
+  The real speed measured was a bit slower at 18.27 Mbps. This slight drop in speed might be due to extra delays 
+  we didn't think about, like those from network protocols, or changes in how busy the network was when we measured. 
+  However, our prediction was very close to the real speed, showing that our method for figuring out the slowest 
+  part of the path was accurate.
+
 
 ******************************************************************************************************************************************************
+
 Q3
 
 Two pairs:
-  prediction:   
+  Prediction:   
     latency:
       h1 to h4(avg rtt) = 170.049 ms
       h7 to h9(avg rtt) = 170.049 ms
@@ -48,7 +57,7 @@ Two pairs:
       h7 to h9 = 6.59 Mbps
   
 Three pairs:
-  prediction:
+  Prediction:
     latency:
       h8 to h10(avg rtt) = 170.049 ms
       h7 to h9(avg rtt) = 170.049 ms
@@ -90,5 +99,14 @@ Analysis:
 ******************************************************************************************************************************************************
 
 Q4
+prediction:
+  latency:
+    h1 to h4(avg rtt) = 170.049 ms
+    h5 to h6(avg rtt) = latency_l4 + latency_l2 + latency_l5 = 11.911 + 22.657 + 11.897 = 46.465 ms
+  throughput:
+    For h1 to h4: 
+
+Measure:
+
 
 
