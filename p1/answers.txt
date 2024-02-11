@@ -37,18 +37,18 @@ Q3
 
 Two pairs:
   Prediction:   
-    latency:
+    Latency:
       h1 to h4(avg rtt) = 170.049 ms
       h7 to h9(avg rtt) = 170.049 ms
-    throughput:
+    Throughput:
       h1 to h4 = 18.94 / 2 = 9.47 Mbps
       h7 to h9 = 18.94 / 2 = 9.47 Mbps
 
   Measure:
-    latency:
+    Latency:
       h1 to h4(avg rtt) = 168.219 ms
       h7 to h9(avg rtt) = 172.611 ms
-    throughput:
+    Throughput:
       server (h1) = 12.50 Mbps
       client (h4) = 17.50 Mbps
       server (h7) = 6.59 Mbps
@@ -58,21 +58,21 @@ Two pairs:
   
 Three pairs:
   Prediction:
-    latency:
+    Latency:
       h8 to h10(avg rtt) = 170.049 ms
       h7 to h9(avg rtt) = 170.049 ms
       h1 to h4(avg rtt) = 170.049 ms
-    throughput:
+    Throughput:
       h8 to h10 = 18.94 / 3 = 6.31 Mbps
       h7 to h9 = 18.94 / 3 = 6.31 Mbps
       h1 to h4 = 18.94 / 3 = 6.31 Mbps
 
   Measure:
-    latency:
+    Latency:
       h8 to h10(avg rtt) = 168.727 ms
       h7 to h9(avg rtt) = 170.935 ms
       h1 to h4(avg rtt) = 170.029 ms  
-    throughput:
+    Throughput:
       server (h1) = 3.26 Mbps
       client (h4) = 4.11 Mbps
       server (h8) = 5.35 Mbps
@@ -99,14 +99,31 @@ Analysis:
 ******************************************************************************************************************************************************
 
 Q4
-prediction:
-  latency:
+Prediction:
+  Latency:
     h1 to h4(avg rtt) = 170.049 ms
     h5 to h6(avg rtt) = latency_l4 + latency_l2 + latency_l5 = 11.911 + 22.657 + 11.897 = 46.465 ms
-  throughput:
-    For h1 to h4: 
+  Throughput:
+    h1 to h4 = 18.94 Mbps 
+    h5 to h6 = 23.90 Mbps
 
 Measure:
+  Latency:
+    h1 to h4(avg rtt) = 170.624 ms
+    h5 to h6(avg rtt) = 48.039 ms
+  Throughput:
+    h1 to h4 = 15.08 Mbps
+    h5 to h6 = 23.03 Mbps
+
+Analysis:
+  For h1 to h4, we almost hit the mark with our guess, expecting 170.049 ms and seeing 170.624 ms. This tiny difference 
+  shows our guess was really close. For h5 to h6, our guess was 46.465 ms, and the actual was a bit higher at 48.039 ms. 
+  Again, we were pretty close, showing we understand how delays add up in the network.
+
+  The data speed (throughput) from h1 to h4 was lower than we thought. We guessed 18.94 Mbps, but it was actually 15.08 Mbps.
+  This drop might be because the network was busier than we expected. For h5 to h6, our guess was close again. 
+  We predicted 23.90 Mbps, and it came out to 23.03 Mbps. This small miss suggests our method for guessing speeds is 
+  on the right track but might need a tweak for busy networks.
 
 
 
