@@ -12,5 +12,34 @@ throughput:
 server = 18.27 mbps
 client = 22.64 mbps
 
+
+Analysis:
+  Latency: The measured latency of 168.037 ms is slightly lower than the predicted 
+170.049 ms. This discrepancy could be due to network conditions at the time of measurement, 
+such as reduced congestion or improved routing efficiency, 
+which were not accounted for in the initial prediction.
+  Throughput: The measured throughputs for both server (18.27 Mbps) and client (22.64 Mbps) 
+are slightly below the predicted values (18.94 Mbps and 22.90 Mbps, respectively). 
+The minor difference can be attributed to factors such as overhead in the network protocol, 
+which consumes a portion of the bandwidth, or variations in network traffic that were not considered in the prediction.
+
 Q3
+
+prediction: We think 
+
+Measure:
+  latency:
+    h1 - h4 : avg rtt = 168.219
+    h7 - h9 : avg rtt = 172.611
+  throughput:
+    server (h1): 12.50 Mbps
+    client (h4): 17.50 Mbps
+    server (h7): 6.59 Mbps
+    client (h9): 8.70 Mbps
+
+    for client side : 17.50 + 8.70 = 26.20 Mbps
+    for server side: 12.50 + 6.59 = 19.09 Mbps
+
+
+
 
