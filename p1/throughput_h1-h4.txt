@@ -1,2 +1,5 @@
 Calling Server
 received= 44529.00 KB rate= 15.08 Mbps
+
+client
+sent= 44529.00 KB rate= 17.81 Mbps
